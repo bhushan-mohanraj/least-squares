@@ -11,12 +11,12 @@ class AppFrame(tk.Frame):
     The main frame for the least squares app.
     """
 
-    def __init__(self, master=None):
+    def __init__(self, parent=None):
         """
         Create the main frame.
         """
 
-        super().__init__(master)
+        super().__init__(parent)
 
         self.grid()
 
