@@ -1,2 +1,5 @@
-# Python and Environment
+# Python
+__pycache__
+
+# Environment
 venv
