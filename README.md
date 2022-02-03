@@ -4,7 +4,7 @@ A demonstration of the method of least squares.
 
 # Development
 
-## Environment
+## Environment (Python 3.10)
 
 ### macOS
 
