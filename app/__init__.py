@@ -33,7 +33,7 @@ class App(tk.Tk):
 
         super().__init__()
 
+        self.title("Least Squares")
+
         app_frame = AppFrame(self)
         app_frame.grid()
-
-        self.title("Least Squares")
