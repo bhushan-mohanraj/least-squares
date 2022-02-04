@@ -38,10 +38,28 @@ class GraphFrame(ttk.Frame):
             sticky=tk.W,
         )
 
+        self.approximation_area_label = ttk.Label(
+            self,
+            text="Area: " + str(round(app.variables.approximation_area.get(), 2)),
+        )
+
+        app.variables.approximation_area.trace(
+            "w",
+            self.set_approximation_area_label,
+        )
+
+        self.approximation_area_label.grid(
+            row=1,
+            column=0,
+            padx=app.constants.PADDING_X,
+            pady=app.constants.PADDING_Y,
+            sticky=tk.W,
+        )
+
         canvas = app.graph.canvas.GraphCanvas(self)
 
         canvas.grid(
-            row=1,
+            row=2,
             column=0,
             padx=app.constants.PADDING_X,
             pady=app.constants.PADDING_Y,
@@ -50,4 +68,13 @@ class GraphFrame(ttk.Frame):
 
         self.grid_columnconfigure(0, weight=1)
 
-        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+
+    def set_approximation_area_label(self, *args):
+        """
+        Set the label for the area label.
+        """
+
+        self.approximation_area_label.config(
+            text="Area: " + str(round(app.variables.approximation_area.get(), 2)),
+        )
