@@ -10,12 +10,15 @@ import app.constants
 
 # The points to plot.
 POINTS = [
-    (-4, 1),
+    (-2, 1),
     (1, -2),
-    (2, 7),
-    (7, 3),
-    (9, 8),
+    (2, 5),
+    (7, 7),
 ]
+
+# The optimal slope and intercept from a calculator.
+OPTIMAL_M = 0.785714285
+OPTIMAL_B = 1.178571429
 
 
 class GraphCanvas(tk.Canvas):
@@ -68,6 +71,13 @@ class GraphCanvas(tk.Canvas):
         app.variables.display_residual_squares.trace(
             "w",
             self.draw_residual_squares,
+        )
+
+        # Draw the optimal line
+        # whenever the user selects the checkbox.
+        app.variables.display_optimal_line.trace(
+            "w",
+            self.draw_optimal_line,
         )
 
     def draw(self, event):
@@ -243,3 +253,23 @@ class GraphCanvas(tk.Canvas):
         approximation_area = sum([residual**2 for residual in residuals])
 
         app.variables.approximation_area.set(approximation_area)
+
+    def draw_optimal_line(self, *args):
+        """
+        Draw the optimal line from the method of least squares.
+        """
+
+        # Delete the old optimal line if it exists.
+        self.delete(getattr(self, "optimal_line_id", None))
+
+        if app.variables.display_optimal_line.get():
+            # Draw the new optimal line and store its ID.
+            m = OPTIMAL_M
+            b = OPTIMAL_B
+
+            self.optimal_line_id = self.create_line(
+                *self.convert_coordinates(-5, -5 * m + b),
+                *self.convert_coordinates(10, 10 * m + b),
+                width=2,
+                fill="green",
+            )
