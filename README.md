@@ -8,7 +8,7 @@ A demonstration of the method of least squares.
 
 - Certain Python imports are made within classes
 because Tkinter requires that operations like creating variables
-only occur after some `tk.Tk` window has been declared.
+occur only after some `tk.Tk` window has been initialized.
 
 ## Environment (Python 3.10)
 
