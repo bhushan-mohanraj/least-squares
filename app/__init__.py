@@ -14,6 +14,13 @@ root.title("Least Squares")
 root.minsize(800, 600)
 root.grid_columnconfigure(0, weight=1)
 
+style = ttk.Style(root)
+
+style.configure("TLabel", font=("Helvetica", 18))
+style.configure("Heading.TLabel", font=("Helvetica", 36, "bold"))
+
+style.configure("TCheckbutton", font=("Helvetica", 18))
+
 
 class AppFrame(ttk.Frame):
     """

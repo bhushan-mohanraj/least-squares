@@ -31,7 +31,7 @@ class SettingsFrame(ttk.Frame):
         label = ttk.Label(
             self,
             text="Settings",
-            font=app.constants.LARGE_FONT,
+            style="Heading.TLabel",
         )
 
         label.grid(
@@ -44,8 +44,7 @@ class SettingsFrame(ttk.Frame):
 
         self.approximation_m_label = ttk.Label(
             self,
-            text="Slope: " + str(app.variables.approximation_m.get()),
-            font=app.constants.SMALL_FONT,
+            text="Slope: " + str(round(app.variables.approximation_m.get(), 2)),
         )
 
         app.variables.approximation_m.trace(
@@ -79,8 +78,7 @@ class SettingsFrame(ttk.Frame):
 
         self.approximation_b_label = ttk.Label(
             self,
-            text="Intercept: " + str(app.variables.approximation_b.get()),
-            font=app.constants.SMALL_FONT,
+            text="Intercept: " + str(round(app.variables.approximation_b.get(), 2)),
         )
 
         app.variables.approximation_b.trace(
@@ -112,6 +110,34 @@ class SettingsFrame(ttk.Frame):
             sticky=tk.EW,
         )
 
+        display_squares_check = ttk.Checkbutton(
+            self,
+            text="Display Squares",
+            variable=app.variables.display_squares,
+        )
+
+        display_squares_check.grid(
+            row=self.row_number,
+            column=0,
+            padx=app.constants.PADDING_X,
+            pady=app.constants.PADDING_Y,
+            sticky=tk.W,
+        )
+
+        display_optimal_line_check = ttk.Checkbutton(
+            self,
+            text="Display Optimal Line",
+            variable=app.variables.display_optimal_line,
+        )
+
+        display_optimal_line_check.grid(
+            row=self.row_number,
+            column=0,
+            padx=app.constants.PADDING_X,
+            pady=app.constants.PADDING_Y,
+            sticky=tk.W,
+        )
+
         self.grid_columnconfigure(0, weight=1)
 
     @property
@@ -130,7 +156,7 @@ class SettingsFrame(ttk.Frame):
         """
 
         self.approximation_m_label.config(
-            text="Slope: " + str(round(app.variables.approximation_m.get(), 1)),
+            text="Slope: " + str(round(app.variables.approximation_m.get(), 2)),
         )
 
     def set_approximation_b_label(self, *args):
@@ -139,5 +165,5 @@ class SettingsFrame(ttk.Frame):
         """
 
         self.approximation_b_label.config(
-            text="Intercept: " + str(round(app.variables.approximation_b.get(), 1)),
+            text="Intercept: " + str(round(app.variables.approximation_b.get(), 2)),
         )
