@@ -18,6 +18,7 @@ occur only after some `tk.Tk` window has been initialized.
 - Allow the user to drag points around,
 and calculate the optimal slope and intercept
 with NumPy or similar libraries.
+- Test and check for logical errors.
 
 ## Environment (Python 3.10)
 
