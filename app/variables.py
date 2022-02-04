@@ -10,6 +10,9 @@ import tkinter as tk
 optimal_m = tk.DoubleVar()
 optimal_b = tk.DoubleVar()
 
+# The sum of squared residuals for the optimal line.
+optimal_area = tk.DoubleVar()
+
 # The slope and intercept of the approximation line
 # that the user sets through the app settings.
 approximation_m = tk.DoubleVar()
