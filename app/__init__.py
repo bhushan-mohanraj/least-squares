@@ -8,12 +8,14 @@ from tkinter import ttk
 import app.constants
 
 
+# Create the root window.
 root = tk.Tk()
 
 root.title("Least Squares")
 root.minsize(720, 540)
 root.grid_columnconfigure(0, weight=1)
 
+# Create styles for different elements.
 style = ttk.Style(root)
 
 style.configure("TLabel", font=("Helvetica", 18))
@@ -50,5 +52,6 @@ class AppFrame(ttk.Frame):
         self.grid_columnconfigure(1, weight=3)
 
 
+# Add the main app frame to the root window.
 app_frame = AppFrame(root)
 app_frame.grid(sticky=tk.NSEW)
