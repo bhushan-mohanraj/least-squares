@@ -2,7 +2,7 @@
 Create and run an app instance.
 """
 
-from app import App
+import app
 
 
-App().mainloop()
+app.App().mainloop()
