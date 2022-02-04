@@ -91,11 +91,15 @@ class GraphCanvas(tk.Canvas):
         self.x_axis_id = self.create_line(
             *self.convert_coordinates(-5, 0),
             *self.convert_coordinates(10, 0),
+            width=2,
+            arrow=tk.BOTH,
         )
 
         self.y_axis_id = self.create_line(
             *self.convert_coordinates(0, -5),
             *self.convert_coordinates(0, 10),
+            width=2,
+            arrow=tk.BOTH,
         )
 
     def draw_approximation_line(self, *args):
@@ -113,4 +117,6 @@ class GraphCanvas(tk.Canvas):
         self.approximation_line_id = self.create_line(
             *self.convert_coordinates(-5, -5 * m + b),
             *self.convert_coordinates(10, 10 * m + b),
+            width=2,
+            fill="blue",
         )
