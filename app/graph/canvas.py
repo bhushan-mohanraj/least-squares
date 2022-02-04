@@ -53,6 +53,23 @@ class GraphCanvas(tk.Canvas):
             self.draw_approximation_line,
         )
 
+        # Redraw the residual squares
+        # whenever the user changes the parameters.
+        app.variables.approximation_m.trace(
+            "w",
+            self.draw_residual_squares,
+        )
+
+        app.variables.approximation_b.trace(
+            "w",
+            self.draw_residual_squares,
+        )
+
+        app.variables.display_residual_squares.trace(
+            "w",
+            self.draw_residual_squares,
+        )
+
     def draw(self, event):
         """
         Draw the canvas elements.
@@ -61,6 +78,7 @@ class GraphCanvas(tk.Canvas):
         self.draw_axes()
         self.draw_approximation_line()
         self.draw_points()
+        self.draw_residual_squares()
 
     def convert_coordinates(self, x, y):
         """
@@ -159,3 +177,69 @@ class GraphCanvas(tk.Canvas):
             )
 
             self.point_ids.append(point_id)
+
+    def draw_residual_squares(self, *args):
+        """
+        Draw the residual squares if desired
+        and calculate and display the sum of squared residuals.
+        """
+
+        # Delete the old residual squares if they exist.
+        for residual_square_id in getattr(self, "residual_square_ids", []):
+            self.delete(residual_square_id)
+
+        # The residual values for the points.
+        residuals = []
+
+        # Draw the new residual squares and store their IDs if desired.
+        self.residual_square_ids = []
+
+        # The approximation slope and intercept.
+        m = app.variables.approximation_m.get()
+        b = app.variables.approximation_b.get()
+
+        for point in POINTS:
+            point_x, point_y = point
+
+            # Determine the residual.
+            residual = (point_x * m + b) - point_y
+
+            residuals.append(residual)
+
+            if app.variables.display_residual_squares.get():
+                # Draw the square left of points above the line.
+                if residual < 0:
+                    residual_square_id = self.create_rectangle(
+                        *self.convert_coordinates(
+                            point_x + residual,
+                            point_y + residual,
+                        ),
+                        *self.convert_coordinates(
+                            point_x,
+                            point_y,
+                        ),
+                        width=2,
+                        outline="red",
+                    )
+
+                # Draw the square right of points below the line.
+                else:
+                    residual_square_id = self.create_rectangle(
+                        *self.convert_coordinates(
+                            point_x,
+                            point_y,
+                        ),
+                        *self.convert_coordinates(
+                            point_x + residual,
+                            point_y + residual,
+                        ),
+                        width=2,
+                        outline="red",
+                    )
+
+                self.residual_square_ids.append(residual_square_id)
+
+        # Calculate and display the sum of squared residuals.
+        approximation_area = sum([residual**2 for residual in residuals])
+
+        app.variables.approximation_area.set(approximation_area)
