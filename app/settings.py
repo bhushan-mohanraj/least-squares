@@ -20,13 +20,13 @@ class SettingsFrame(ttk.Frame):
 
         super().__init__(master, **kwargs)
 
-        self.label = ttk.Label(
+        label = ttk.Label(
             self,
             text="Settings",
             font=app.constants.LARGE_FONT,
         )
 
-        self.label.grid(
+        label.grid(
             row=0,
             column=0,
             padx=app.constants.PADDING_X,

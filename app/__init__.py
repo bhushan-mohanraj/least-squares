@@ -21,9 +21,9 @@ class AppFrame(ttk.Frame):
 
         super().__init__(master, **kwargs)
 
-        self.settings_frame = app.settings.SettingsFrame(self)
+        settings_frame = app.settings.SettingsFrame(self)
 
-        self.settings_frame.grid(
+        settings_frame.grid(
             row=0,
             column=0,
             padx=app.constants.PADDING_X,
@@ -49,7 +49,7 @@ class App(tk.Tk):
 
         self.title("Least Squares")
 
-        self.app_frame = AppFrame(self)
-        self.app_frame.grid(sticky=tk.NSEW)
+        app_frame = AppFrame(self)
+        app_frame.grid(sticky=tk.NSEW)
 
         self.grid_columnconfigure(0, weight=1)
