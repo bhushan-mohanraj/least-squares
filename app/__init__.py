@@ -11,7 +11,7 @@ import app.constants
 root = tk.Tk()
 
 root.title("Least Squares")
-root.minsize(800, 600)
+root.minsize(720, 540)
 root.grid_columnconfigure(0, weight=1)
 
 style = ttk.Style(root)
