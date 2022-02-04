@@ -10,6 +10,10 @@ A demonstration of the method of least squares.
 because Tkinter requires that operations like creating variables
 occur only after some `tk.Tk` window has been initialized.
 
+### To Do
+
+- Fix `pylint` warnings.
+
 ## Environment (Python 3.10)
 
 ### macOS
