@@ -8,6 +8,16 @@ from tkinter import ttk
 import app.constants
 
 
+# The points to plot.
+POINTS = [
+    (-4, 1),
+    (1, -2),
+    (2, 7),
+    (7, 3),
+    (9, 8),
+]
+
+
 class GraphCanvas(tk.Canvas):
     """
     The graph canvas.
@@ -50,6 +60,7 @@ class GraphCanvas(tk.Canvas):
 
         self.draw_axes()
         self.draw_approximation_line()
+        self.draw_points()
 
     def convert_coordinates(self, x, y):
         """
@@ -120,3 +131,31 @@ class GraphCanvas(tk.Canvas):
             width=2,
             fill="blue",
         )
+
+    def draw_points(self, *args):
+        """
+        Draw the points to plot.
+        """
+
+        # Delete the old points if they exist.
+        for point_id in getattr(self, "point_ids", []):
+            self.delete(point_id)
+
+        # Draw the new points and store their IDs.
+        self.point_ids = []
+
+        for point in POINTS:
+            # Determine the center coordinates.
+            point_x, point_y = self.convert_coordinates(*point)
+
+            # Draw the point as an oval.
+            point_id = self.create_oval(
+                point_x - 6,
+                point_y - 6,
+                point_x + 6,
+                point_y + 6,
+                fill="red",
+                outline="red",
+            )
+
+            self.point_ids.append(point_id)
