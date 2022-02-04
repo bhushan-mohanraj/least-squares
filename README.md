@@ -4,6 +4,12 @@ A demonstration of the method of least squares.
 
 # Development
 
+## Notes
+
+- Certain Python imports are made within classes
+because Tkinter requires that operations like creating variables
+only occur after some `tk.Tk` window has been declared.
+
 ## Environment (Python 3.10)
 
 ### macOS

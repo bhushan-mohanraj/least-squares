@@ -6,13 +6,20 @@ import tkinter as tk
 from tkinter import ttk
 
 import app.constants
-import app.settings
+
+
+root = tk.Tk()
+
+root.title("Least Squares")
+root.grid_columnconfigure(0, weight=1)
 
 
 class AppFrame(ttk.Frame):
     """
     The main frame for the least squares app.
     """
+
+    import app.settings
 
     def __init__(self, master, **kwargs):
         """
@@ -35,21 +42,5 @@ class AppFrame(ttk.Frame):
         self.grid_columnconfigure(1, weight=3)
 
 
-class App(tk.Tk):
-    """
-    The least squares app.
-    """
-
-    def __init__(self):
-        """
-        Create the app.
-        """
-
-        super().__init__()
-
-        self.title("Least Squares")
-
-        app_frame = AppFrame(self)
-        app_frame.grid(sticky=tk.NSEW)
-
-        self.grid_columnconfigure(0, weight=1)
+app_frame = AppFrame(root)
+app_frame.grid(sticky=tk.NSEW)
