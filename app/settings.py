@@ -42,13 +42,18 @@ class SettingsFrame(ttk.Frame):
             sticky=tk.W,
         )
 
-        approximation_m_label = ttk.Label(
+        self.approximation_m_label = ttk.Label(
             self,
-            text="Slope:",
+            text="Slope: " + str(app.variables.approximation_m.get()),
             font=app.constants.SMALL_FONT,
         )
 
-        approximation_m_label.grid(
+        app.variables.approximation_m.trace(
+            "w",
+            self.set_approximation_m_label,
+        )
+
+        self.approximation_m_label.grid(
             row=self.row_number,
             column=0,
             padx=app.constants.PADDING_X,
@@ -72,13 +77,18 @@ class SettingsFrame(ttk.Frame):
             sticky=tk.EW,
         )
 
-        approximation_b_label = ttk.Label(
+        self.approximation_b_label = ttk.Label(
             self,
-            text="Intercept:",
+            text="Intercept: " + str(app.variables.approximation_b.get()),
             font=app.constants.SMALL_FONT,
         )
 
-        approximation_b_label.grid(
+        app.variables.approximation_b.trace(
+            "w",
+            self.set_approximation_b_label,
+        )
+
+        self.approximation_b_label.grid(
             row=self.row_number,
             column=0,
             padx=app.constants.PADDING_X,
@@ -113,3 +123,21 @@ class SettingsFrame(ttk.Frame):
         self._row_number += 1
 
         return self._row_number
+
+    def set_approximation_m_label(self, *args):
+        """
+        Set the label for the slope label.
+        """
+
+        self.approximation_m_label.config(
+            text="Slope: " + str(round(app.variables.approximation_m.get(), 1)),
+        )
+
+    def set_approximation_b_label(self, *args):
+        """
+        Set the label for the intercept label.
+        """
+
+        self.approximation_b_label.config(
+            text="Intercept: " + str(round(app.variables.approximation_b.get(), 1)),
+        )
