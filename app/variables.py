@@ -19,8 +19,8 @@ approximation_b = tk.DoubleVar()
 approximation_area = tk.DoubleVar()
 
 # Display the squares for each residual.
-display_squares = tk.BooleanVar()
-display_squares.set(tk.FALSE)
+display_residual_squares = tk.BooleanVar()
+display_residual_squares.set(tk.FALSE)
 
 # Display the optimal line
 # that minimizes the sum of squared residuals.

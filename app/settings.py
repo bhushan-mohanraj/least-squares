@@ -110,13 +110,13 @@ class SettingsFrame(ttk.Frame):
             sticky=tk.EW,
         )
 
-        display_squares_check = ttk.Checkbutton(
+        display_residual_squares_check = ttk.Checkbutton(
             self,
             text="Display Squares",
-            variable=app.variables.display_squares,
+            variable=app.variables.display_residual_squares,
         )
 
-        display_squares_check.grid(
+        display_residual_squares_check.grid(
             row=self.row_number,
             column=0,
             padx=app.constants.PADDING_X,
