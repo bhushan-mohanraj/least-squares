@@ -10,6 +10,9 @@ import tkinter as tk
 approximation_m = tk.DoubleVar()
 approximation_b = tk.DoubleVar()
 
+# The sum of squared residuals for the approximation line.
+approximation_area = tk.DoubleVar()
+
 # Display the squares for each residual.
 display_residual_squares = tk.BooleanVar()
 display_residual_squares.set(tk.FALSE)
