@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import ttk
 
 import app.constants
+import app.graph.canvas
 
 
 class GraphFrame(ttk.Frame):
@@ -36,3 +37,15 @@ class GraphFrame(ttk.Frame):
             pady=app.constants.PADDING_Y,
             sticky=tk.W,
         )
+
+        canvas = app.graph.canvas.GraphCanvas(self)
+
+        canvas.grid(
+            row=1,
+            column=0,
+            padx=app.constants.PADDING_X,
+            pady=app.constants.PADDING_Y,
+            sticky=tk.EW + tk.S,
+        )
+
+        self.grid_columnconfigure(0, weight=1)
