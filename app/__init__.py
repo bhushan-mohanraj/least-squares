@@ -5,8 +5,6 @@ Create the main app frame and the app.
 import tkinter as tk
 from tkinter import ttk
 
-import app.constants
-
 
 # Create the root window.
 root = tk.Tk()
@@ -23,35 +21,8 @@ style.configure("Heading.TLabel", font=("Helvetica", 36, "bold"))
 
 style.configure("TCheckbutton", font=("Helvetica", 18))
 
-
-class AppFrame(ttk.Frame):
-    """
-    The main frame for the least squares app.
-    """
-
-    import app.settings
-
-    def __init__(self, master, **kwargs):
-        """
-        Create the main frame.
-        """
-
-        super().__init__(master, **kwargs)
-
-        settings_frame = app.settings.SettingsFrame(self)
-
-        settings_frame.grid(
-            row=0,
-            column=0,
-            padx=app.constants.PADDING_X,
-            pady=app.constants.PADDING_Y,
-            sticky=tk.NSEW,
-        )
-
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=3)
-
-
 # Add the main app frame to the root window.
-app_frame = AppFrame(root)
+import app.frame
+
+app_frame = app.frame.AppFrame(root)
 app_frame.grid(sticky=tk.NSEW)
