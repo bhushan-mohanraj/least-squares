@@ -27,8 +27,12 @@ class GraphCanvas(tk.Canvas):
         # since the canvas is a classic Tkinter widget.
         self["background"] = "white"
 
+        # Draw the canvas elements when the canvas loads
+        # or whenever the user resizes the canvas window.
         self.bind("<Configure>", self.draw)
 
+        # Redraw the approximation line
+        # whenever the user changes the parameters.
         app.variables.approximation_m.trace(
             "w",
             self.draw_approximation_line,
@@ -41,13 +45,8 @@ class GraphCanvas(tk.Canvas):
 
     def draw(self, event):
         """
-        Draw the canvas elements when the canvas loads
-        or whenever the user resizes the canvas window
-        (which corresponds to the "Configure" event).
+        Draw the canvas elements.
         """
-
-        # The coordinate system of the Tkinter canvas
-        # has its origin at the top-left corner.
 
         self.draw_axes()
         self.draw_approximation_line()
@@ -62,15 +61,13 @@ class GraphCanvas(tk.Canvas):
         height = self.winfo_height()
 
         # Move the x and y coordinates into the system
-        # with the same scale as the displayed system
-        # but with its origin at the bottom-left corner,
-        # since the axes display the ranges from -5 to 10
-        # in the horizontal and vertical directions.
+        # with its origin at the bottom-left corner,
+        # since the axes display the ranges from -5 to 10.
         x += 5
         y += 5
 
         # Since the positive vertical direction is downward
-        # for the actual canvas coordinate system,
+        # in the Tkinter canvas coordinate system,
         # the y coordinate must be flipped.
         y = 15 - y
 
