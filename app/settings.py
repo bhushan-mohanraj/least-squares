@@ -112,7 +112,7 @@ class SettingsFrame(ttk.Frame):
 
         display_residual_squares_check = ttk.Checkbutton(
             self,
-            text="Display Squares",
+            text="Display Residual Squares",
             variable=app.variables.display_residual_squares,
         )
 
