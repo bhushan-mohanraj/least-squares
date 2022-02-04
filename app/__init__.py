@@ -11,7 +11,9 @@ root = tk.Tk()
 
 root.title("Least Squares")
 root.minsize(720, 540)
+
 root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
 
 # Create styles for different elements.
 style = ttk.Style(root)

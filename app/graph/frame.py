@@ -45,7 +45,9 @@ class GraphFrame(ttk.Frame):
             column=0,
             padx=app.constants.PADDING_X,
             pady=app.constants.PADDING_Y,
-            sticky=tk.EW + tk.S,
+            sticky=tk.NSEW,
         )
 
         self.grid_columnconfigure(0, weight=1)
+
+        self.grid_rowconfigure(1, weight=1)
