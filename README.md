@@ -13,6 +13,7 @@ occur only after some `tk.Tk` window has been initialized.
 ### To Do
 
 - Fix `pylint` warnings.
+- Rename `app` to `least_squares`.
 - Fix the arrows (cut off) in the graph.
 - Fix the colors (too bold) in the graph.
 - Allow the user to drag points around,
