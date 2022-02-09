@@ -17,8 +17,7 @@ occur only after some `tk.Tk` window has been initialized.
 - Fix the arrows (cut off) in the graph.
 - Fix the colors (too bold) in the graph.
 - Allow the user to drag points around,
-and calculate the optimal slope and intercept
-with NumPy or similar libraries.
+and calculate the optimal slope and intercept.
 - Test and check for logical errors.
 
 ## Environment (Python 3.10)
